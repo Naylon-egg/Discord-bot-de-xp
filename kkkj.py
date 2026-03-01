@@ -4,7 +4,7 @@ import random
 import json
 import os
 
-TOKEN = "MTQ3MzY2NDIwMzE3OTk1MDE1MQ.GtO8Yr.14cNxnf9kXbTTkalI1nNTjqsT4X0t9NDTk6R9s"  # Coloque seu token aqui
+TOKEN = ""  # Coloque seu token aqui
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -229,7 +229,7 @@ async def ajuda(ctx):
 
 @bot.command()
 @commands.has_permissions(administrator=True)
-async def morrakelvyn(ctx):
+async adms(ctx): # pode ser alterado
     embed = discord.Embed(title="🛠️ Comandos de Administrador", color=0xe74c3c)
     embed.add_field(
         name="⚙️ Administração de XP e Nível",
@@ -245,53 +245,6 @@ async def morrakelvyn(ctx):
     )
     await ctx.send(embed=embed)
 
-# =========================
-# COMANDOS RPG ORIGINAIS
-# =========================
-
-@bot.command(name="kashira")
-async def kashira(ctx):
-    opcoes = [
-        "Transformação em boneco",
-        "Técnica da marionete",
-        "Técnica do voodoo"
-    ]
-    gifs = [
-        "https://tenor.com/view/horror-houseofwax-gif-18765811",
-        "https://tenor.com/view/puppet-fnaf-five-nights-at-freddys-gangnam-style-dance-gif-9941259697419559025",
-        "https://tenor.com/view/nobara-nobara-kugisaki-kugisaki-nobara-jujutsu-kaisen-jjk-gif-9522241155096356986"
-    ]
-    index = random.randint(0, len(opcoes)-1)
-    embed = discord.Embed(
-        title="Resultado do Kashira!",
-        description=f"Jogador tem: **{opcoes[index]}**",
-        color=0x00ff00
-    )
-    embed.set_image(url=gifs[index])
-    await ctx.send(embed=embed)
-
-@bot.command(name="fragmentado")
-async def fragmentado(ctx):
-    opcoes = [
-        "Deus da criação +30 em inteligencia",
-        "Deus da crueldade +15 em magia",
-        "Deus do mar +15 em agilidade e capacidade de nadar na terra",
-        "Deus galinha +1 de força",
-        "Deus dos peixes +10 de velocidade",
-        "Deus das emoções +20 em inteligencia", 
-        "Deus dos ursos +10 em resistencia e força",
-        "Deus das pernas +19 em velocidade",
-        "Deus da inexistencia +30 em magia",
-        "Deus dos braços +19 em força",
-        "Deus da velhice +imortalidade vital",
-        "Deus da violencia +25 de força"
-    ]
-    embed = discord.Embed(
-        title="Resultado do Fragmentado!",
-        description=f"Jogador é fragmentado do: **{random.choice(opcoes)}**",
-        color=0xff0000
-    )
-    await ctx.send(embed=embed)
 
 # =========================
 # COMANDOS DADOS FIXOS
@@ -344,5 +297,6 @@ async def d100(ctx):
 @bot.event
 async def on_ready():
     print(f"Conectado como {bot.user}")
+
 
 bot.run(TOKEN)
